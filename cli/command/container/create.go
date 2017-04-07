@@ -59,7 +59,7 @@ func NewCreateCommand(dockerCli *command.DockerCli) *cobra.Command {
 func runCreate(dockerCli *command.DockerCli, flags *pflag.FlagSet, opts *createOptions, copts *containerOptions) error {
 	config, hostConfig, networkingConfig, err := parse(flags, copts)
 	if err != nil {
-		reportError(dockerCli.Err(), "create", err.Error(), true)
+		reportError(dockerCli.Err(), "container_create", err.Error(), true)
 		return cli.StatusError{StatusCode: 125}
 	}
 	response, err := createContainer(context.Background(), dockerCli, config, hostConfig, networkingConfig, hostConfig.ContainerIDFile, opts.name)

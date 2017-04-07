@@ -1,6 +1,9 @@
 package container
 
 import (
+
+
+	"fmt"
 	"github.com/docker/docker/api/server/httputils"
 	"github.com/docker/docker/api/server/router"
 )
@@ -37,6 +40,8 @@ func (r *containerRouter) Routes() []router.Route {
 
 // initRoutes initializes the routes in container router
 func (r *containerRouter) initRoutes() {
+	
+	fmt.Println("Inside the initRoute")
 	r.routes = []router.Route{
 		// HEAD
 		router.NewHeadRoute("/containers/{name:.*}/archive", r.headContainersArchive),
